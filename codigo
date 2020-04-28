@@ -1,0 +1,84 @@
+package lista;
+import java.util.Scanner;
+public class caixa {
+    public static void main(String[] args) {
+         Scanner ler = new Scanner(System.in);
+         String cpf = ("123.456.789-00");
+         boolean caixaligado= true;
+         double saldo = 1000.00, saque =0, deposito=0,transf=0;
+         int opcao,ag;
+         int tentativa =0;
+         String conta; 
+         String senha ="01020304";
+    while(caixaligado == true){
+        for(int i=0;i<3;){
+        System.out.println("Bem vindo ao caixa eletrônico!");
+        System.out.print("Digite seu CPF com o formato xxxxxxxxx-xx ");
+        cpf = ler.next();
+        if(!cpf.equals("123.456.789-00")){
+            System.out.print("Digite sua senha para continuar: ");
+            senha=ler.next(); 
+                if(!senha.equals("01020304")){
+                    i=i+1;
+                    System.out.println("Senha incorreta, tente novamente");
+                }else{
+                System.out.println("Seja bem vindo cliente 123.456.789-00");
+                   do{
+                       System.out.println("Escolha uma das opções abaixo:");
+                       System.out.print("1 - Saldo \n2 - Saque \n3 - Depósito \n4 - Transferência \n0 - Sair\n");
+                       opcao = ler.nextInt();              
+                            switch(opcao){
+                                case 1:
+                                    System.out.println("Seu saldo é de R$: "+saldo);
+                                    break;
+                            
+                                case 2:
+                                
+                                    System.out.print("Qual o valor gostaria de sacar? R$: ");
+                                    saque = ler.nextDouble();
+                                    saldo = saldo - saque;
+                                    System.out.println("Você sacou R$: "+saque+" e agora tem um saldo de R$: "+saldo);
+                                    break;
+
+                                case 3:
+
+                                    System.out.print("Qual o valor do depósito? R$: ");
+                                    deposito = ler.nextDouble();
+                                    saldo = saldo + deposito;
+                                    System.out.print("Você depositou R$: "+deposito+" com sucesso! Seu saldo atual agora é de R$: "+saldo);
+                                    break;
+
+                                case 4:
+                                    System.out.print("Digite a agência (Sem DV): ");
+                                    ag = ler.nextInt();
+                                    System.out.print("Digite a conta (com DV): ");
+                                    conta = ler.next();
+                                    System.out.print("Qual o valor da Transferência? R$: ");
+                                    transf=ler.nextDouble();
+                                    saldo = saldo - transf;
+                                    System.out.println("Você transferiu R$: "+transf+" com sucesso para a \nAgência: "+ag+"\nConta: "+conta+"\nSeu saldo atual é de R$: "+saldo);
+                                    break;
+                                
+                                case 0:
+
+                                    System.out.println("Você saiu do caixa, obrigado por usar nossos caixas eletronicos!");
+                                    break;
+
+                                default:
+                                    System.out.println("Você digitou um comando inválido, tente novamente!");
+                           }                 
+                    }while(opcao !=0);
+               } if(i==2){
+                      System.out.println("voce errou sua senha muitas vezes");
+                      System.out.println("Conta bloqueada");
+                      System.exit(0); 
+                   }    
+            }else{
+                System.out.println("CPF invalido!");
+        }
+}
+}
+}
+}
+
+
